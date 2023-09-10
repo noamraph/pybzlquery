@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pybzlquery"
+version = "0.1.0"
+description = ""
+authors = ["Noam Yorav-Raphael <noam.yoravraphael@mobileye.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+protobuf = "^4.24.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
