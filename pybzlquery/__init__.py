@@ -119,7 +119,7 @@ def parse_aquery(raw: bytes) -> list[Action]:
         action_key=a.action_key,
         mnemonic=a.mnemonic,
         configuration=configurations[a.configuration_id],
-        arguments=a.arguments,
+        arguments=list(a.arguments),
         environment_variables={p.key: p.value for p in a.environment_variables},
         input_dep_sets=[dep_sets[i] for i in a.input_dep_set_ids],
         scheduling_dep_dep_sets=[dep_sets[i] for i in a.scheduling_dep_dep_set_ids] if hasattr(a, 'scheduling_dep_dep_set_ids') else None,
