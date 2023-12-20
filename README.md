@@ -3,7 +3,7 @@
 # Usage
 
 ```
-!bazel aquery --output proto TARGET > aquery.protobuf
+!bazel aquery --output proto 'deps(TARGET)' > aquery.protobuf
 
 from pathlib import Path
 from pprint import pprint
@@ -22,3 +22,8 @@ cd gen-mods
 nix build
 cp --no-preserve=mode result/* ../pybzlquery/
 ```
+
+# Links to adapted sources
+
+https://github.com/bazelbuild/bazel/blob/master/src/main/protobuf/build.proto
+https://github.com/bazelbuild/bazel/blob/master/src/main/protobuf/analysis_v2.proto

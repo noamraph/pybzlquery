@@ -3,8 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from subprocess import check_output
 from typing import Any
+from enum import Enum
 
-from .analysis_v2_pb2 import ActionGraphContainer  # type: ignore
+from .analysis_v2_pb2 import ActionGraphContainer, CqueryResult  # type: ignore
 # from .build_pb2 import *
 
 # def query(ws: str, target: str) -> QueryResult:
@@ -88,6 +89,15 @@ class Action:
     is_executable: bool
 
 
+class Discriminator(Enum):
+    RULE = 1
+    SOURCE_FILE = 2
+    GENERATED_FILE = 3
+    PACKAGE_GROUP = 4
+    ENVIRONMENT_GROUP = 5
+
+
+
 def get_path(path_fragment_id: int, path_fragments: dict[int, Any]) -> str:
     path_fragment = path_fragments[path_fragment_id]
     if path_fragment.parent_id != 0:
@@ -137,3 +147,7 @@ def parse_aquery(raw: bytes) -> list[Action]:
     ) for a in aquery.actions]
 
     return actions
+
+
+def parse_cquery(raw: bytes) -> list[ConfiguredTarget]:
+    pass
